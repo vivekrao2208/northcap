@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Orbitron } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -7,7 +7,13 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+export const metadata: Metadata = { 
   title: "Northpole Capital",
   description: "Beyond The Quantum Leap",
 };
@@ -20,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${manrope.variable} antialiased`}
+        className={`${manrope.variable} ${orbitron.variable} antialiased`}
       >
         {children}
       </body>
