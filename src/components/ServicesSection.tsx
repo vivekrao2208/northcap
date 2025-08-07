@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 
 export default function ServicesSection() {
@@ -32,7 +33,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -41,10 +42,10 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Our Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive financial solutions tailored to meet the evolving needs of modern investors.
           </p>
         </motion.div>
@@ -57,16 +58,16 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group p-8 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors duration-200"
+              className="group p-8 border border-border rounded-lg hover:border-border/80 transition-colors duration-200"
             >
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-gray-700 transition-colors duration-200">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
-              <div className="flex items-center text-gray-900 font-medium group-hover:text-gray-700 transition-colors duration-200">
-                Learn More
-                <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
-              </div>
+                              <h3 className="text-xl font-semibold text-foreground mb-4 group-hover:text-foreground/80 transition-colors duration-200">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground mb-4">{service.description}</p>
+                <Link href="#" className="flex items-center text-foreground font-medium group-hover:text-foreground/80 transition-colors duration-200">
+                  Learn More
+                  <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200" />
+                </Link>
             </motion.div>
           ))}
         </div>

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
@@ -16,7 +17,7 @@ export default function Header() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
+    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <motion.div
@@ -32,28 +33,31 @@ export default function Header() {
               height={60}
               className="w-20 h-20"
             />
-            <span className="ml-3 text-2xl font-bold text-gray-900 font-orbitron">NorthPole Capital</span>
+            <span className="ml-3 text-2xl font-bold text-foreground font-orbitron">NorthPole Capital</span>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
-              <motion.a
+              <motion.div
                 key={item.name}
-                href={item.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-gray-600 hover:text-gray-900 transition-colors duration-200 font-medium"
               >
-                {item.name}
-              </motion.a>
+                <Link
+                  href={item.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium"
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
             <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium"
+              className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors duration-200 font-medium"
             >
               Get Started
             </motion.button>
@@ -63,7 +67,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-gray-900"
+              className="text-muted-foreground hover:text-foreground"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -76,20 +80,20 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-gray-100"
+            className="md:hidden border-t border-border"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                  className="block px-3 py-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
-              <button className="w-full mt-4 bg-gray-900 text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium">
+              <button className="w-full mt-4 bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors duration-200 font-medium">
                 Get Started
               </button>
             </div>

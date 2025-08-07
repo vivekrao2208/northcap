@@ -23,7 +23,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-20 bg-muted/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -32,10 +32,10 @@ export default function AboutSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Redefining Financial Excellence
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             NorthPole Capital combines decades of financial expertise with cutting-edge technology to deliver exceptional results for our clients.
           </p>
         </motion.div>
@@ -48,13 +48,13 @@ export default function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center"
+              className="bg-background p-8 rounded-lg shadow-sm border border-border text-center"
             >
-              <div className="text-gray-900 mb-4 flex justify-center">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+                              <div className="text-foreground mb-4 flex justify-center">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-4">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
             </motion.div>
           ))}
         </div>
