@@ -23,7 +23,7 @@ export default function Hero() {
         }}
       >
         <Image
-          src="/char-wave.jpeg"
+          src="/char-wave01.jpeg"
           alt="Character Wave"
           fill
           className="object-cover"

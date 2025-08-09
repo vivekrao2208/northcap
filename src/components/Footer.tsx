@@ -45,10 +45,10 @@ export default function Footer() {
                 height={40}
                 className="w-10 h-10"
               />
-              <span className="ml-3 text-2xl font-bold font-orbitron">NorthPole Capital</span>
+              <span className="ml-3 text-2xl font-extrabold font-orbitron">NorthPole Capital LLC.</span>
             </div>
             <p className="text-primary-foreground/70 mb-6 max-w-md">
-              Beyond The Quantum Leap. Pioneering the future of financial services with innovation and excellence.
+              Beyond the Quantum Leap. Pioneering the future of financial services with innovation and excellence.
             </p>
             <div className="flex space-x-4">
               {socialIcons.map((social, index) => (
@@ -101,7 +101,7 @@ export default function Footer() {
         <div className="border-t border-primary-foreground/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-primary-foreground/70 text-sm">
-              © {new Date().getFullYear()} NorthPole Capital. All rights reserved.
+              © {new Date().getFullYear()} NorthPole Capital LLC. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               {legalLinks.map((link, index) => (
