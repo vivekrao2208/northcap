@@ -33,7 +33,7 @@ export default function Header() {
               height={60}
               className="w-20 h-20"
             />
-            <span className="ml-3 text-2xl font-extrabold text-foreground font-orbitron">NorthPole Capital</span>
+            <span className="ml-3 text-2xl font-bold text-foreground font-orbitron">NorthPole Capital</span>
           </motion.div>
 
           {/* Desktop Navigation */}
