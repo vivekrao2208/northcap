@@ -99,20 +99,6 @@ export default function TradingSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent"></div>
             </div>
-            
-            {/* Floating Stats Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="absolute -bottom-6 -left-6 bg-background rounded-lg shadow-lg p-6 border border-border"
-            >
-              <div className="text-center">
-                <div className="text-3xl font-bold text-foreground mb-1">99.9%</div>
-                <div className="text-sm text-muted-foreground">Uptime</div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
