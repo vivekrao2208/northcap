@@ -45,7 +45,7 @@ export default function Footer() {
                 height={40}
                 className="w-10 h-10"
               />
-              <span className="ml-3 text-2xl font-extrabold font-orbitron">NorthPole Capital LLC.</span>
+              <span className="ml-3 text-2xl font-extrabold font-orbitron">NorthPole Capital</span>
             </div>
             <p className="text-primary-foreground/70 mb-6 max-w-md">
               Beyond the Quantum Leap. Pioneering the future of financial services with innovation and excellence.
