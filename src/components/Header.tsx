@@ -25,18 +25,19 @@ export default function Header() {
 						initial={{ opacity: 0, x: -20 }}
 						animate={{ opacity: 1, x: 0 }}
 						transition={{ duration: 0.5 }}
-						className="flex items-center"
 					>
-						<Image
-							src="/logo-dark.png"
-							alt="NorthPole Capital"
-							width={60}
-							height={60}
-							className="w-20 h-20"
-						/>
-						<span className="ml-3 text-2xl font-extrabold text-foreground font-orbitron">
-							NorthPole Capital
-						</span>
+						<Link href="/" className="flex items-center">
+							<Image
+								src="/logo-dark.png"
+								alt="NorthPole Capital"
+								width={60}
+								height={60}
+								className="w-20 h-20"
+							/>
+							<span className="ml-3 text-2xl font-extrabold text-foreground font-orbitron">
+								NorthPole Capital
+							</span>
+						</Link>
 					</motion.div>
 
 					{/* Desktop Navigation */}
@@ -71,6 +72,7 @@ export default function Header() {
 					{/* Mobile menu button */}
 					<div className="md:hidden">
 						<button
+							type="button"
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
 							className="text-muted-foreground hover:text-foreground"
 						>
@@ -98,8 +100,8 @@ export default function Header() {
 									{item.name}
 								</Link>
 							))}
-							<Link href="/join-us">
-								<Button>JOIN US</Button>
+							<Link href="/join-us" onClick={() => setIsMenuOpen(false)}>
+								<Button className="w-full">JOIN US</Button>
 							</Link>
 						</div>
 					</motion.div>
