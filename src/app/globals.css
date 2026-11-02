@@ -49,13 +49,55 @@ body {
 	font-family: var(--font-manrope);
 }
 
-html {
-	scrollbar-width: none;
-	-ms-overflow-style: none;
+/* A thin bar tracks reading progress; the native scrollbar is only hidden where the bar can render. */
+.scroll-progress {
+	display: none;
 }
 
-html::-webkit-scrollbar {
-	display: none;
+@supports (animation-timeline: scroll()) {
+	html {
+		scrollbar-width: none;
+	}
+
+	html::-webkit-scrollbar {
+		display: none;
+	}
+
+	.scroll-progress {
+		display: block;
+		/* Stays empty whenever the scroll timeline is inactive, rather than showing as a full-width line. */
+		transform: scaleX(0);
+		transform-origin: left;
+		animation: scroll-progress linear both;
+		animation-timeline: scroll(root);
+	}
+}
+
+@keyframes scroll-progress {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+/* Content fades up as it scrolls into view. */
+@media (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: view()) {
+		.reveal {
+			animation: reveal linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 60%;
+		}
+	}
+}
+
+@keyframes reveal {
+	from {
+		opacity: 0;
+		translate: 0 1.5rem;
+	}
 }
 
 h1,

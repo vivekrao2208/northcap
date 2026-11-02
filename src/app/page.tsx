@@ -37,8 +37,9 @@ const leaps = [
 	},
 ] as const;
 
-const light = "bg-white text-black selection:bg-black selection:text-white";
-const dark = "bg-black text-white selection:bg-white selection:text-black";
+// Off-white and near-black rather than pure white and black, which feel harsh at full size.
+const light = "bg-stone-50 text-neutral-950 selection:bg-neutral-950 selection:text-stone-50";
+const dark = "bg-neutral-950 text-stone-50 selection:bg-stone-50 selection:text-neutral-950";
 const container = "mx-auto max-w-6xl px-6 py-24 md:py-32";
 const prose = "text-lg leading-relaxed text-pretty";
 const focusRing =
@@ -55,7 +56,8 @@ function Intro({
 }) {
 	return (
 		<div className="grid gap-8 md:grid-cols-12 md:gap-12">
-			<h2 className="flex items-center gap-4 self-start text-xs font-semibold uppercase tracking-[0.3em] opacity-60 md:col-span-4 md:pt-5">
+			{/* On wide screens the label stays in view while its section's text scrolls past. */}
+			<h2 className="flex items-center gap-4 self-start text-xs font-semibold uppercase tracking-[0.3em] opacity-60 md:sticky md:top-24 md:col-span-4 md:pt-5">
 				<span aria-hidden className="tabular-nums">
 					{number}
 				</span>
@@ -69,7 +71,7 @@ function Intro({
 
 function Statement({ children }: { children: ReactNode }) {
 	return (
-		<p className="font-barlow text-3xl font-medium leading-[1.1] tracking-tight text-balance md:text-5xl">
+		<p className="reveal font-barlow text-4xl font-medium leading-[1.05] tracking-tighter text-balance md:text-6xl">
 			{children}
 		</p>
 	);
@@ -77,7 +79,7 @@ function Statement({ children }: { children: ReactNode }) {
 
 function Takeaway({ children }: { children: ReactNode }) {
 	return (
-		<p className="mt-10 border-l border-current pl-6 text-lg font-medium leading-relaxed text-pretty">
+		<p className="reveal mt-10 border-l border-current pl-6 text-lg font-medium leading-relaxed text-pretty">
 			{children}
 		</p>
 	);
@@ -85,7 +87,7 @@ function Takeaway({ children }: { children: ReactNode }) {
 
 function Callout({ label, children }: { label?: string; children: ReactNode }) {
 	return (
-		<div className="mt-24 grid gap-6 md:grid-cols-12 md:gap-x-12">
+		<div className="reveal mt-24 grid gap-6 md:grid-cols-12 md:gap-x-12">
 			{label && (
 				<p className="text-xs font-semibold uppercase tracking-[0.3em] opacity-60 md:col-span-8 md:col-start-5">
 					{label}
@@ -101,10 +103,11 @@ function Callout({ label, children }: { label?: string; children: ReactNode }) {
 function Hero() {
 	return (
 		<header className={`relative flex min-h-svh flex-col items-center overflow-hidden px-6 ${dark}`}>
-			<span aria-hidden className="w-px flex-1 bg-linear-to-b from-transparent to-white/30" />
+			{/* Taking a larger share of the spare height than the line below sets the lockup slightly lower. */}
+			<span aria-hidden className="w-px flex-[1.65] bg-linear-to-b from-transparent to-white/30" />
 			<div className="flex flex-col items-center pb-12 text-center">
 				{/* Logo and wordmark share one font size, so the logo (sized in em) scales with the text. */}
-				<div className="flex items-center gap-[0.6em] text-[clamp(0.75rem,3.9vw,2.75rem)]">
+				<div className="flex items-center gap-[0.6em] text-[clamp(0.75rem,4vw,3rem)]">
 					<Image
 						src="/logo-light.png"
 						alt=""
@@ -139,13 +142,14 @@ function Hero() {
 export default function Home() {
 	return (
 		<>
+			<div aria-hidden className="scroll-progress fixed inset-x-0 top-0 z-50 h-0.5 bg-white mix-blend-difference" />
 			<Hero />
 
 			<main>
 				<section id="about" className={light}>
 					<div className={container}>
 						<Intro number="01" title="Who we are">
-							<Statement>A new kind of quantitative firm, built&nbsp;and run by Autonomous Machines.</Statement>
+							<Statement>A trading firm built&nbsp;and run by Autonomous Machines.</Statement>
 							<div className={`mt-10 space-y-6 ${prose} text-neutral-600`}>
 								<p>
 									NorthPole Capital is an AI-centric quantitative finance firm. Our software
@@ -171,7 +175,7 @@ export default function Home() {
 
 				<section id="story" className={dark}>
 					<div className={container}>
-						<Intro number="02" title="Our perspective">
+						<Intro number="02" title="The story so far">
 							<Statement>Quantitative finance has always advanced in leaps.</Statement>
 							<p className={`mt-10 ${prose} text-white/70`}>
 								Financial markets are among the most complex systems ever created: millions
@@ -185,7 +189,7 @@ export default function Home() {
 							{leaps.map((leap) => (
 								<li
 									key={leap.year}
-									className="group grid gap-3 border-b border-white/15 py-8 md:grid-cols-12 md:items-baseline md:gap-12"
+									className="reveal group grid gap-3 border-b border-white/15 py-8 md:grid-cols-12 md:items-baseline md:gap-12"
 								>
 									<span className="font-barlow text-4xl font-medium tabular-nums text-white/40 group-last:text-white md:col-span-4 md:text-5xl">
 										{leap.year}
@@ -205,7 +209,7 @@ export default function Home() {
 									conduct the research themselves.
 								</p>
 								<Takeaway>
-									NorthPole Capital is built to make that leap, and to go beyond it.
+									The next leap is underway. NorthPole Capital is built to lead it.
 								</Takeaway>
 							</div>
 						</div>
@@ -215,10 +219,10 @@ export default function Home() {
 				<section id="race" className={light}>
 					<div className={container}>
 						<Intro number="03" title="Our ambition">
-							<Statement>We aim to help advance general intelligence.</Statement>
+							<Statement>We aim to achieve true AGI, and quantitative finance is the starting line.</Statement>
 							<div className={`mt-10 space-y-6 ${prose} text-neutral-600`}>
 								<p>
-									Artificial general intelligence — systems able to learn, reason, and make
+									Artificial General Intelligence — systems able to learn, reason, and make
 									discoveries across any domain — is among the defining technological
 									endeavors of this generation. Alongside it stands a broader deep-technology
 									effort: translating frontier science into technology that changes how the
@@ -280,9 +284,9 @@ export default function Home() {
 							<address className="mt-12 border-y border-white/15 not-italic">
 								<a
 									href={`mailto:${email}`}
-									className="group -mx-4 flex flex-col gap-2 px-4 py-6 transition-colors hover:bg-white hover:text-black focus-visible:bg-white focus-visible:text-black focus-visible:outline-none sm:flex-row sm:items-center sm:justify-between"
+									className="group -mx-4 flex flex-col gap-2 px-4 py-6 transition-colors hover:bg-stone-50 hover:text-neutral-950 focus-visible:bg-stone-50 focus-visible:text-neutral-950 focus-visible:outline-none sm:flex-row sm:items-center sm:justify-between"
 								>
-									<span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60 group-hover:text-black/60 group-focus-visible:text-black/60">
+									<span className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60 group-hover:text-neutral-950/60 group-focus-visible:text-neutral-950/60">
 										Email
 									</span>
 									<span className="font-barlow text-xl sm:text-2xl">{email}</span>

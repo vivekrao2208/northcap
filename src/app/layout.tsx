@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow, Manrope, Orbitron } from "next/font/google";
 import "./globals.css";
 
@@ -34,13 +34,18 @@ export const metadata: Metadata = {
 	},
 };
 
+// Matches the hero and footer, so overscroll and the mobile browser chrome stay dark.
+export const viewport: Viewport = {
+	themeColor: "#0a0a0a",
+};
+
 export default function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" className="bg-neutral-950">
 			<body
 				className={`${manrope.variable} ${barlow.variable} ${orbitron.variable} antialiased`}
 			>
