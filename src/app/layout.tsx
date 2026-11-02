@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow, Manrope, Orbitron } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const manrope = Manrope({
 	variable: "--font-manrope",
@@ -27,11 +25,11 @@ export const metadata: Metadata = {
 		template: "%s | NorthPole Capital",
 	},
 	description:
-		"Beyond The Quantum Leap — research-driven quantitative trading, technology, and liquidity across global markets.",
+		"Beyond the Quantum Leap. NorthPole Capital is an AI-centric quantitative finance firm, built and run by Autonomous Machines.",
 	openGraph: {
 		title: "NorthPole Capital",
 		description:
-			"Research-driven quantitative trading firm pioneering financial technology.",
+			"An AI-centric quantitative finance firm, built and run by Autonomous Machines.",
 		type: "website",
 	},
 };
@@ -46,15 +44,7 @@ export default function RootLayout({
 			<body
 				className={`${manrope.variable} ${barlow.variable} ${orbitron.variable} antialiased`}
 			>
-				<a
-					href="#main-content"
-					className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-background focus:text-foreground focus:px-4 focus:py-2 focus:rounded-md focus:shadow"
-				>
-					Skip to content
-				</a>
-				<Header />
-				<div id="main-content">{children}</div>
-				<Footer />
+				{children}
 			</body>
 		</html>
 	);
